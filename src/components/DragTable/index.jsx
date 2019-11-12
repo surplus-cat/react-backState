@@ -9,7 +9,6 @@ import './index.less'
 let dragingIndex = -1;
 
 class BodyRow extends React.Component {
-
   render() {
     const { isOver, connectDragSource, connectDropTarget, moveRow, ...restProps } = this.props;
     const style = { ...restProps, cousor: 'move' }
@@ -40,3 +39,97 @@ const rowSource = {
   }
 }
 
+const rowTarget = {
+  drop(props, monitor) {
+    const dragIndex = monitor.getItem().index;
+    const hoverIndex = props.index;
+
+    if (dragIndex === hoverIndex) {
+      return
+    }
+
+    props.moveRow(dragIndex, hoverIndex);
+    monitor.getItem().index = hoverIndex;
+  }
+}
+
+const DragableBodyRow = DropTarget('row', rowTarget, (connect, monitor) => ({
+  connectDropTarget: connect.dropTarget(),
+  isOver: monitor.isOver()
+}))(
+  DragSource('row', rowSource, connect => ({
+    connectDragSource: connect.dragSource(),
+  }))(BodyRow)
+);
+
+class DragSortingTable extends React.Component {
+
+  constructor() {
+    super();
+    this.state = {
+      data: []
+    }
+  }
+
+  componentWillReceiveProps (nextProps) {
+    this.setState({
+      data: nextProps.dataSource
+    })
+  }
+
+  components = {
+    body: {
+      row: DragableBodyRow
+    }
+  }
+
+  moveRow = async (dragIndex, hoverIndex) => {
+    const { data } = this.state;
+    const dragRow = data[dragIndex];
+
+    await this.setState(
+      update(this.state, {
+        data: {
+          $splice: [[dragIndex, 1], [hoverIndex, 0, dragRow]]
+        }
+      })
+    )
+
+    this.props.onDragEnd && this.props.onDragEnd(dragIndex, hoverIndex, dragRow, this.state.data)
+  }
+
+  render() {
+
+    return (
+      <DndProvider backend={HTML5Backend}>
+        <Table
+          id="admin-drag-table"
+          columns={this.props.columns}
+          dataSource={this.state.data}
+          components={this.components}
+          onRow={(record, index) => {
+            return {
+              index,
+              moveRow: this.moveRow,
+            }
+          }}/>
+      </DndProvider>
+    )
+  }
+}
+
+
+
+DragSortingTable.propTypes = {
+  columns: PropsType.array.isRequired,
+  dataSource: PropsType.array.isRequired,
+  onDragEnd: PropsType.func
+}
+
+DragSortingTable.defaultProps = {
+  columns: [],
+  dataSource: [],
+  onDragEnd: () => {}
+}
+
+export default DragSortingTable

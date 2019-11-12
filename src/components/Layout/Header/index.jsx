@@ -21,13 +21,12 @@ const menuIconStyle = {
 }
 
 const AdminHeader = (props) => {
-  
   const { userInfo, onMenuClick, currentMenuStatus } = props;
 
   return (
     <Layout.Header className="clearfix" style={{ backgroundColor: '#fff', padding: 0 }}>
       <div className="admin-header-left pull-left">
-        <Icon 
+        <Icon
           onClick={(e) => {
             e.preventDefault();
             onMenuClick()

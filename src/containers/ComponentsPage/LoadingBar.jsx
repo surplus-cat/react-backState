@@ -4,9 +4,7 @@ import { connect } from 'react-redux'
 import LoadingBar from '@/components/LoadingBar'
 import { actionCreators as breadcrumbAction } from '@/redux/modules/breadcrumb'
 
-
 const LoadingBarPage = (props) => {
-
 
   const { setBreadcrumb } = props;
 
@@ -42,7 +40,6 @@ const LoadingBarPage = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-
   }
 }
 

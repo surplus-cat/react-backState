@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 import echarts from 'echarts/lib/echarts'
 import PropTypes from 'prop-types'
 import 'echarts/lib/component/tooltip' // 提示框组件
@@ -10,14 +10,14 @@ import { bind, clear } from 'size-sensor'
 import { throttle } from '../../utils/'
 
 
-class Chart extends React.PureComponent {
+class Chart extends PureComponent {
 
   constructor (props) {
     super(props);
     this.chart = null;
   }
 
-  async componentWillMount() {
+  async componentDidMount() {
     await this.initChart(this.el)
     this.setOption();
     bind(this.el, throttle(this.resize), 100)

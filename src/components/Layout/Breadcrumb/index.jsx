@@ -27,8 +27,7 @@ const AdminBreadcrumb = (props) => {
       className="admin-breadcrumb__item"
       key={item.path}
       onClick={() => handleClick(item.path)}>
-      { index === 0 ? <Icon type="home" /> : <Icon type="switcher" /> }
-      { item.name }
+      { index === 0 ? <Icon type="home" /> : <Icon type="switcher" /> } { item.name }
     </Breadcrumb.Item>
   ))
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import './index.less'
 import { Row, Col, Card } from 'antd';
@@ -31,7 +31,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 @connect(mapStateToProps, mapDispatchToProps)
-class App extends React.Component {
+class App extends Component {
 
   componentDidMount() {
     this.props.setBreadcrumb([])

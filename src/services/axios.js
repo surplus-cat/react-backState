@@ -1,4 +1,3 @@
-
 import axios from 'axios'
 import LoadingBar from '@/components/LoadingBar'
 

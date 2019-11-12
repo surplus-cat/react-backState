@@ -10,7 +10,7 @@ import { actionCreators } from '@/redux/modules/breadcrumb'
 import './index.less'
 
 const mapStateToProps = (state) => ({
-  getTagPage () {
+  get tagPage () {
     return state.breadcrumb.tagPage
   }
 })
@@ -29,7 +29,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 @withRouter
 @connect(mapStateToProps, mapDispatchToProps)
-class TagPageOpen extends React.Component {
+class TagPageOpen extends Component {
 
   // 当前tag ref
   _currentTag = null;
@@ -104,7 +104,6 @@ class TagPageOpen extends React.Component {
 
   handleTip (payload) {
     const { history } = this.props;
-    
     if (payload.path !== history.location.pathname) {
       history.push(payload.path)
     }

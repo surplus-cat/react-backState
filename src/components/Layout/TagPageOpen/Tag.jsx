@@ -15,8 +15,8 @@ const Tag = (props) => {
       <span className={`zh-tag__dot zh-tag__dot--${props.color ? props.color : 'default'}`}></span>
       <span className="zh-tag__text">{props.children}</span>
       {
-        !props.closable ? 
-        <Icon 
+        !props.closable ?
+        <Icon
           onClick={e => {
             e.stopPropagation();
             props.onClose && props.onClose(e)

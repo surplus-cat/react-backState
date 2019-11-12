@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Table, Tag } from 'antd'
 import PropTypes from 'prop-types'
-import { formatMoney } from '@/utils/common'
+import { formatMoney } from '@/utils'
 
 const OrderTable = (props) => {
   const tableColumns = [
@@ -57,9 +57,9 @@ const OrderTable = (props) => {
   ]
 
   return (
-    <React.Fragment>
+    <Fragment>
       <Table pagination={false} columns={tableColumns} dataSource={props.dataSource} />
-    </React.Fragment>
+    </Fragment>
   )
 }
 

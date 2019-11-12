@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 import Echart from './Echart'
 import PropTypes from 'prop-types'
 import 'echarts/lib/chart/pie'
 
-class Pie extends React.PureComponent {
+class Pie extends PureComponent {
 
   getOptions = () => {
     const { options } = this.props;

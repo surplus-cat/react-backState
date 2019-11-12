@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import './NoFind.less';
 
-class NoFind extends React.Component {
+class NoFind extends Component {
 
   componentDidMount() {
     document.addEventListener('mousemove', this.mousemoveFunc);

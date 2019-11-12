@@ -25,7 +25,6 @@ const LoadingPage = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-
   }
 }
 

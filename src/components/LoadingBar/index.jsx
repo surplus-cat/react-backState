@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component, Fragment } from 'react'
 import ReactDOM from 'react-dom';
 import './index.less';
 
@@ -7,7 +7,7 @@ let currentLoadingBar = null;
 // 动画结束后 销毁组件的间隔
 let duration = 800;
 
-class LoadingBar extends React.Component {
+export default class LoadingBar extends Component {
   // 当前LoadingBar实例
   _containerRef = null
   // 插入LoadingBar父级元素
@@ -146,7 +146,7 @@ class LoadingBar extends React.Component {
   render() {
     const { currentBgColor, percent } = this.state
     return (
-      <React.Fragment>
+      <Fragment>
         <div
           style={{transform: `translate3d(${percent}%, 0px, 0px)`}}
           className={`zh-loadingBar__progress zh-loadingBar--${currentBgColor}`}>
@@ -155,9 +155,7 @@ class LoadingBar extends React.Component {
         <div className="zh-loadingBar__icon-wrapper">
           <div className={`zh-loadingBar__icon zh-loadingBar__icon--${currentBgColor}`}></div>
         </div>
-      </React.Fragment>
+      </Fragment>
     )
   }
 }
-
-export default LoadingBar;

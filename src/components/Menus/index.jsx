@@ -50,7 +50,7 @@ const Menus = (props) => {
    * menuitem 点击回调
    */
   const { history } = props;
-  
+
   const handleMenu = (params) => {
     if (params.key !== history.location.pathname) {
       history.push(params.key)
@@ -64,7 +64,7 @@ const Menus = (props) => {
 
   /**
    * 菜单打开回调
-   * @param {*} openKeys 
+   * @param {*} openKeys
    */
   // const onOpenChange = (openKeys) => {
     // const latestOpenKey = openKeys.find(key => menuOpenKeys.indexOf(key) === -1)
@@ -85,6 +85,6 @@ const Menus = (props) => {
       }
     </Menu>
   )
-} 
+}
 
 export default Menus;
