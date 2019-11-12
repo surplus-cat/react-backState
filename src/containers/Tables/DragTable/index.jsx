@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import DragTable from '@/components/DragTable'
+import DragTable from '@/components/Draggable'
 import { connect } from 'react-redux'
 import { actionCreators as breadcrumbAction } from '@/redux/modules/breadcrumb'
 import { actionCreators } from '@/redux/modules/table'
